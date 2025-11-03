@@ -879,6 +879,37 @@ main {
   text-decoration: none;
 }
 
+
+/* Contact Section */
+.contact {
+  padding: 5rem 0 6rem;
+  background-color: #fff;
+  text-align: center;
+}
+
+.contact .contact-content {
+  margin-top: 2rem;
+}
+
+.contact .btn-primary {
+  font-size: 1.1rem;
+  padding: 0.9rem 2.5rem;
+  border-radius: 40px;
+  background-color: #2aa79b;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 6px 14px rgba(42, 167, 155, 0.4);
+  transition: background-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.contact .btn-primary:hover,
+.contact .btn-primary:focus {
+  background-color: #23876f;
+  box-shadow: 0 8px 20px rgba(35, 135, 111, 0.6);
+  outline: none;
+}
+
+
 /* Responsive tweaks */
 @media (max-width: 560px) {
   .portfolio-image {
