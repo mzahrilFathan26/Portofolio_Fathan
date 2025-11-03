@@ -909,6 +909,49 @@ main {
   outline: none;
 }
 
+/* Responsive Contact Section */
+
+/* Tablet (600px - 899px) */
+@media (max-width: 899px) {
+  .contact {
+    padding: 4rem 1.5rem 5rem;
+  }
+  .contact .section-title {
+    font-size: 2.2rem;
+  }
+  .contact .section-subtitle {
+    font-size: 1.1rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .contact .btn-primary {
+    font-size: 1rem;
+    padding: 0.8rem 2rem;
+  }
+}
+
+/* Mobile Small (up to 599px) */
+@media (max-width: 599px) {
+  .contact {
+    padding: 3rem 1rem 4rem;
+  }
+  .contact .section-title {
+    font-size: 1.8rem;
+  }
+  .contact .section-subtitle {
+    font-size: 1rem;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .contact .btn-primary {
+    font-size: 0.95rem;
+    padding: 0.7rem 1.8rem;
+  }
+}
+
+
 
 /* Responsive tweaks */
 @media (max-width: 560px) {
@@ -926,4 +969,87 @@ main {
     padding: 0.4rem 1.3rem;
   }
 }
+
+/* Dropdown menu mobile / tablet */
+@media (max-width: 899px) {
+  .nav ul {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px); /* efek liquid glass */
+    position: absolute;
+    top: 65px;
+    right: 15px;
+    width: 180px;
+    padding: 2rem 1.5rem;
+    border-radius: 18px;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.2);
+    opacity: 0;
+    transform: scale(0) rotateX(-20deg);
+    transform-origin: top right;
+    transition: transform 0.45s cubic-bezier(0.55, 0.05, 0.675, 0.19),
+                opacity 0.45s ease;
+    z-index: 2000;
+  }
+
+  .nav.active ul {
+    display: flex;
+    opacity: 1;
+    transform: scale(1) rotateX(0deg);
+    transition: transform 0.45s cubic-bezier(0.55, 0.05, 0.675, 0.19),
+                opacity 0.45s ease;
+  }
+
+  /* Teks di tengah */
+  .nav ul li a {
+    text-align: center;
+    width: 100%;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  .nav ul li a:hover,
+  .nav ul li a:focus {
+    color: #2aa79b;
+    transform: scale(1.05);
+  }
+
+  /* Hamburger toggle */
+  #nav-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+  }
+
+  #nav-toggle .bar {
+    width: 26px;
+    height: 3px;
+    background-color: #2aa79b;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+
+
+
+
+
+/* Hamburger toggle animasi */
+.nav.active + #nav-toggle .bar:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.nav.active + #nav-toggle .bar:nth-child(2) {
+  opacity: 0;
+}
+.nav.active + #nav-toggle .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
 

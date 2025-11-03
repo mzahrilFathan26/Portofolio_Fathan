@@ -1,10 +1,13 @@
-// Toggle menu mobile
 const navToggle = document.getElementById('nav-toggle');
 const navMenu = document.getElementById('nav-menu');
 
 navToggle.addEventListener('click', () => {
   navMenu.classList.toggle('active');
+  navToggle.classList.toggle('active'); // untuk animasi silang
 });
+
+
+
 
 // Scroll to top button
 const scrollTopBtn = document.getElementById('scrollTopBtn');
