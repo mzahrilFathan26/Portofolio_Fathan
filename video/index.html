@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MyTube - Portfolio Video</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://kit.fontawesome.com/a2e0e9c6d3.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">My<span>Tube</span></div>
+
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Cari video..." />
+      <button id="searchBtn"><i class="fas fa-search"></i></button>
+    </div>
+
+    <div class="mode-toggle" id="modeToggle">
+      <i class="fas fa-sun" id="lightIcon" style="display:none;"></i>
+      <i class="fas fa-moon" id="darkIcon"></i>
+    </div>
+  </header>
+
+  <!-- Container -->
+  <main class="video-container" id="videoContainer"></main>
+
+  <script>
+  // ======== DATA VIDEO ========
+const videos = [
+  {
+    title: "Tutorial HTML Dasar",
+    url: "https://www.youtube.com/embed/bxbAyvT0qcE?si=1JtNHmnv5ChrMrpX",
+    desc: "Belajar dasar-dasar HTML untuk pemula."
+  },
+  {
+    title: "Belajar CSS Modern",
+    url: "https://www.youtube.com/embed/bxbAyvT0qcE?si=1JtNHmnv5ChrMrpX",
+    desc: "Gaya modern dengan CSS dan animasi."
+  },
+  {
+    title: "JavaScript Interaktif",
+    url: "https://www.youtube.com/embed/bxbAyvT0qcE?si=1JtNHmnv5ChrMrpX",
+    desc: "Membuat website lebih dinamis dengan JS."
+  },
+  {
+    title: "Membuat Portofolio Website",
+    url: "https://www.youtube.com/embed/xV7S8BhIeBo",
+    desc: "Tutorial lengkap membangun web portofolio."
+  }
+];
+
+
+  // ======== GENERATE VIDEO CARD ========
+  const container = document.getElementById("videoContainer");
+
+  function renderVideos(list) {
+    container.innerHTML = "";
+    list.forEach(v => {
+      const card = document.createElement("div");
+      card.classList.add("video-card");
+      card.dataset.title = v.title;
+      card.innerHTML = `
+        <iframe src="${v.url}" frameborder="0" allowfullscreen></iframe>
+        <h3>${v.title}</h3>
+        <p>${v.desc}</p>
+      `;
+      container.appendChild(card);
+    });
+  }
+
+  renderVideos(videos);
+
+  // ======== MODE GELAP-TERANG ========
+  const modeToggle = document.getElementById("modeToggle");
+  const body = document.body;
+  const lightIcon = document.getElementById("lightIcon");
+  const darkIcon = document.getElementById("darkIcon");
+
+  modeToggle.addEventListener("click", () => {
+    body.classList.toggle("dark");
+    const darkMode = body.classList.contains("dark");
+    darkIcon.style.display = darkMode ? "none" : "inline";
+    lightIcon.style.display = darkMode ? "inline" : "none";
+  });
+
+  // ======== PENCARIAN VIDEO ========
+  const searchInput = document.getElementById("searchInput");
+  const searchBtn = document.getElementById("searchBtn");
+
+  function searchVideo() {
+    const filter = searchInput.value.toLowerCase();
+    const filtered = videos.filter(v => v.title.toLowerCase().includes(filter));
+    renderVideos(filtered);
+  }
+
+  searchBtn.addEventListener("click", searchVideo);
+  searchInput.addEventListener("keyup", searchVideo);
+  </script>
+</body>
+</html>
