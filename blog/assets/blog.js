@@ -11,6 +11,7 @@ const POSTS = [
     excerpt:
       "Pengalaman awal saya di Nusa Putra membuka wawasan dan memberikan banyak pelajaran, sekaligus menumbuhkan harapan untuk perjalanan yang lebih bermakna ke depan.",
     body: `
+    <div class="f">
           <h2>KESAN PERTAMA SAYA DI NUSA PUTRA DAN HARAPAN YANG AKAN DATANG</h2>
           <h5>Pengalaman awal saya di Nusa Putra membuka wawasan dan memberikan banyak pelajaran, sekaligus menumbuhkan harapan untuk perjalanan yang lebih bermakna ke depan.</h5>
           <p>Perkenalkan, nama saya Muhammad Zahril Fathan, Biasa dipanggil Fathan. Sekarang saya baru akan menjalani perkuliahan S1 di Universitas Nusa Putra, mengambil jurusan Teknik Informatika. Alhamdulillah, saya bisa langsung melanjutkan kuliah setelah lulus SMK pada tahun 2025, sebuah hal yang sejak lama saya syukuri.</p>
@@ -28,7 +29,8 @@ const POSTS = [
           <p>Selama mengikuti kegiatan MABIM di Universitas Nusa Putra menjadi pengalaman yang sangat berkesan bagi saya. Dari awal hingga akhir, saya merasa banyak mendapatkan ilmu baru, teman baru, dan juga suasana kebersamaan yang hangat. Awalnya memang ada rasa canggung karena harus beradaptasi dengan lingkungan kampus, tapi berkat MABIM saya bisa lebih mengenal universitas ini, sekaligus merasakan semangat yang sama dari teman-teman seperjuangan.</p>
           <p>Pesan yang paling saya tangkap dari MABIM adalah bahwa kehidupan kuliah bukan sekadar mengejar nilai akademik. Lebih dari itu, kuliah juga tentang membentuk karakter, menumbuhkan rasa tanggung jawab, serta belajar bagaimana bekerja sama dengan orang lain. Materi tentang Trilogi Nusa Putra juga memberi saya sudut pandang baru tentang bagaimana seharusnya seorang mahasiswa menjalani kehidupan, baik di kampus maupun di masyarakat.</p>
           <p>Harapan saya setelah melewati MABIM adalah bisa terus berkembang menjadi pribadi yang lebih baik. Saya ingin aktif, tidak hanya di ruang kelas, tetapi juga dalam kegiatan kampus dan sosial. Semoga pengalaman yang saya dapat selama MABIM bisa menjadi bekal untuk menghadapi tantangan di masa kuliah, sekaligus menjadi motivasi untuk mewujudkan mimpi dan memberikan manfaat bagi orang lain.</p>
-        `,
+       </div>
+          `,
   },
   {
     id: "desain-sistem-token",
