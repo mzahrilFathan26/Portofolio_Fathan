@@ -32,7 +32,7 @@ const POSTS = [
        </div>
           `,
   },
-  {
+ /* {
     id: "desain-sistem-token",
     title: "Desain Sistem Token Warna untuk Dark Mode",
     date: "2025-09-18",
@@ -63,7 +63,7 @@ const POSTS = [
           <p>Mulai dari gambar terkompres, lazy loading, dan minimalkan blocking scripts.</p>
           <p>Implementasikan strategi caching agar kunjungan berikutnya makin cepat.</p>
         `,
-  },
+  },*/
   // Tambahkan artikel lain sesuka kamu
 ];
 
