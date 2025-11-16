@@ -52,3 +52,75 @@ document.querySelectorAll('.nav ul li a').forEach(link => {
     }
   });
 });
+
+const darkModeToggle = document.getElementById('darkModeToggle');
+
+// Cek preferensi user saat load
+if(localStorage.getItem('darkMode') === 'enabled') {
+  document.body.classList.add('dark-mode');
+}
+
+// Toggle dark mode
+darkModeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+  if(document.body.classList.contains('dark-mode')) {
+    localStorage.setItem('darkMode', 'enabled');
+  } else {
+    localStorage.setItem('darkMode', 'disabled');
+  }
+});
+
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.nav ul li a');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    const id = entry.target.getAttribute('id');
+    const navLink = document.querySelector(`.nav ul li a[href="#${id}"]`);
+    if(entry.isIntersecting){
+      navLinks.forEach(link => link.classList.remove('active-link'));
+      if(navLink) navLink.classList.add('active-link');
+    }
+  });
+}, { threshold: 0.6 });
+
+sections.forEach(section => observer.observe(section));
+
+const animatedElements = document.querySelectorAll('.fade-in');
+
+const animObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.3 });
+
+animatedElements.forEach(el => animObserver.observe(el));
+
+const progressBar = document.createElement('div');
+progressBar.id = 'progressBar';
+document.body.prepend(progressBar);
+
+window.addEventListener('scroll', () => {
+  const scroll = window.scrollY;
+  const height = document.body.scrollHeight - window.innerHeight;
+  const scrolled = (scroll / height) * 100;
+  progressBar.style.width = `${scrolled}%`;
+});
+
+const lazyImages = document.querySelectorAll('.lazy-load');
+
+const imgObserver = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      const img = entry.target;
+      img.src = img.dataset.src;
+      img.classList.remove('lazy-load');
+      observer.unobserve(img);
+    }
+  });
+});
+
+lazyImages.forEach(img => imgObserver.observe(img));
+

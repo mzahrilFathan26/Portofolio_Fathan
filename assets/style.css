@@ -931,6 +931,30 @@ main {
   }
 }
 
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#progressBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background-color: #2aa79b;
+  width: 0;
+  z-index: 3000;
+  transition: width 0.25s ease;
+}
+
+
+
 /* Mobile Small (up to 599px) */
 @media (max-width: 599px) {
   .contact {
