@@ -4,11 +4,13 @@
   --text: #1e1e1e;
   --card: #f5f8f8;
 }
+
 body.dark {
   --bg: #0f1314;
   --text: #e8e8e8;
   --card: #1a1f21;
 }
+
 body {
   margin: 0;
   padding: 0;
@@ -17,17 +19,24 @@ body {
   font-family: "Inter", sans-serif;
   transition: 0.3s ease;
 }
+
 .container {
   max-width: 900px;
-  margin: 40px auto;
-  padding: 20px;
+  margin: 20px auto;
+  padding: 15px;
 }
+
+/* =====================
+   TOOLBAR
+   ===================== */
 .toolbar {
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-end;
   gap: 12px;
   margin-bottom: 20px;
 }
+
 button {
   background: var(--primary);
   color: #fff;
@@ -41,33 +50,47 @@ button {
   gap: 6px;
   transition: 0.2s;
 }
+
 button:hover {
   opacity: 0.85;
 }
+
+/* =====================
+   HEADER
+   ===================== */
 .header {
   display: flex;
   align-items: center;
   gap: 24px;
   padding-bottom: 20px;
   border-bottom: 2px solid var(--primary);
+  flex-wrap: wrap;
 }
+
 .header img {
   width: 130px;
   height: 130px;
   border-radius: 50%;
   object-fit: cover;
   border: 4px solid var(--primary);
+  flex-shrink: 0;
 }
+
 .header h1 {
   margin: 0;
   font-size: 32px;
   font-weight: 700;
 }
+
 .header p {
   margin: 5px 0 0;
   color: var(--primary);
   font-weight: 600;
 }
+
+/* =====================
+   SECTION
+   ===================== */
 section {
   background: var(--card);
   padding: 20px;
@@ -75,12 +98,17 @@ section {
   margin-top: 25px;
   border-left: 5px solid var(--primary);
 }
+
 section h2 {
   margin-top: 0;
   color: var(--primary);
   font-size: 20px;
   font-weight: 700;
 }
+
+/* =====================
+   TABLE
+   ===================== */
 .table {
   display: grid;
   grid-template-columns: 180px 1fr;
@@ -88,41 +116,62 @@ section h2 {
   column-gap: 25px;
   align-items: start;
 }
-.table div.label {
+
+.table .label {
   font-weight: 700;
   color: var(--primary);
   font-size: 15px;
 }
-.table div.value {
+
+.table .value {
   font-size: 15px;
   font-weight: 500;
 }
+
 .entry {
   margin-bottom: 12px;
   line-height: 1.5;
 }
+
 .entry span {
   font-weight: 700;
   color: var(--primary);
 }
 
+/* Link styling */
+.value a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  word-break: break-word;
+}
+
+.value a:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
 /* ============================
-   RESPONSIVE TABLET (max 900px)
+   TABLET (max 900px)
    ============================ */
 @media (max-width: 900px) {
-
   .container {
-    margin: 20px auto;
+    margin: 15px auto;
     padding: 15px;
+  }
+
+  .header {
+    text-align: center;
+    justify-content: center;
+  }
+
+  .header h1 {
+    font-size: 28px;
   }
 
   .header img {
     width: 110px;
     height: 110px;
-  }
-
-  .header h1 {
-    font-size: 28px;
   }
 
   .table {
@@ -132,13 +181,12 @@ section h2 {
 }
 
 /* ============================
-   RESPONSIVE MOBILE (max 600px)
+   MOBILE (max 600px)
    ============================ */
 @media (max-width: 600px) {
 
   .toolbar {
     flex-direction: column;
-    gap: 10px;
     align-items: stretch;
   }
 
@@ -152,49 +200,45 @@ section h2 {
   .header {
     flex-direction: column;
     text-align: center;
-    gap: 16px;
+    gap: 12px;
   }
 
   .header img {
-    width: 100px;
-    height: 100px;
+    width: 95px;
+    height: 95px;
   }
 
   .header h1 {
-    font-size: 26px;
-  }
-
-  .header p {
-    font-size: 15px;
+    font-size: 24px;
   }
 
   section {
-    padding: 16px;
+    padding: 15px;
   }
 
   section h2 {
     font-size: 18px;
   }
 
-  /* TABEL DI MOBILE MENJADI VERTICAL */
+  /* TABEL JADI VERTICAL */
   .table {
     grid-template-columns: 1fr;
-    row-gap: 6px;
+    row-gap: 5px;
   }
 
   .table .label {
-    color: var(--primary);
+    font-size: 14px;
     margin-top: 10px;
   }
 
   .table .value {
+    font-size: 14px;
     margin-bottom: 10px;
   }
 }
 
 /* ============================
-   RESPONSIVE SMALL DEVICES
-   (max-width 450px)
+   SMALL DEVICE (max 450px)
    ============================ */
 @media (max-width: 450px) {
   .header h1 {
@@ -202,13 +246,12 @@ section h2 {
   }
 
   .header img {
-    width: 90px;
-    height: 90px;
+    width: 85px;
+    height: 85px;
   }
 
-  button {
-    font-size: 14px;
-    padding: 10px;
+  section {
+    padding: 12px;
   }
 
   section h2 {
