@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Curriculum Vitae • Muhamad Irpan</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://unpkg.com/feather-icons"></script>
+
+<!-- ICON -->
+<link rel="icon" sizes="32x32" type="image/png" href="images/cv.png" />
+<link rel="icon" sizes="192x192" href="images/cv.png" />
+<link rel="apple-touch-icon" href="images/cv.png" />
+<link rel="icon" sizes="16x16" href="images/cv.png" />
+
+<!-- CSS -->
+<link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+<div class="container">
+
+  <div class="toolbar">
+    <button onclick="toggleDarkMode()"> <i data-feather="moon"></i> Mode Gelap</button>
+    <button onclick="downloadPDF()"> <i data-feather="download"></i> Download PDF</button>
+  </div>
+
+  <!-- AREA YANG AKAN DI EXPORT PDF -->
+  <div id="cv-area">
+
+    <div class="header">
+      <img src="images/fathan.png" alt="Foto Profil" />
+      <div>
+        <h1>Muhamad Irpan</h1>
+        <p>Curriculum Vitae</p>
+      </div>
+    </div>
+
+    <section>
+      <h2>DATA PRIBADI</h2>
+      <div class="table">
+        <div class="label">Nama</div><div class="value">Muhamad Irpan</div>
+        <div class="label">Tempat, Tgl Lahir</div><div class="value">Sukabumi, 26 Juni 2006</div>
+        <div class="label">Jenis Kelamin</div><div class="value">Laki-laki</div>
+        <div class="label">Kebangsaan</div><div class="value">Indonesia</div>
+        <div class="label">Status</div><div class="value">Mahasiswa</div>
+        <div class="label">Alamat</div><div class="value">Kp. Tegaldatar RT/RW 05/019, Desa Neglasari, Kec. Lengkong, Kab. Sukabumi, Jawa Barat</div>
+        <div class="label">Telepon</div><div class="value">+6285121046062</div>
+        <div class="label">Email</div><div class="value">muhamad.irpan260626@gmail.com</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>PENDIDIKAN FORMAL</h2>
+      <div class="table">
+        <div class="label">2022 – Sekarang</div><div class="value">SMK Harapan Bangsa, Sukabumi</div>
+        <div class="label">2019 – 2022</div><div class="value">SMP Insan Cendekia Arrasyid</div>
+        <div class="label">2013 – 2019</div><div class="value">Madrasah Ibtidaiyah Tegaldatar</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>PENGALAMAN ORGANISASI</h2>
+      <div class="table">
+        <div class="label">2023 – 2024</div><div class="value">Ketua OSIS, Ketua PMR, Ketua Tech Club, Divisi KOMINFO FOKSI</div>
+        <div class="label">2022 – 2023</div><div class="value">SEKBID TIK OSIS SMK Harapan Bangsa</div>
+        <div class="label">2019 – 2020</div><div class="value">Bendahara 2 OSIS SMP ICA</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>PENCAPAIAN</h2>
+      <div class="table">
+        <div class="label">2024</div><div class="value">Duta Hukum & HAM Jawa Barat</div>
+        <div class="label">2024</div><div class="value">Anggota PASKIBRA Kecamatan Lengkong</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>PENGALAMAN PKL</h2>
+      <div class="table">
+        <div class="label">2024</div><div class="value">PKL di Komisi Pemilihan Umum Kabupaten Sukabumi</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>KEAHLIAN</h2>
+      <div class="table">
+        <div class="label">Pengoperasian Komputer</div>
+        <div class="value">Terampil menggunakan perangkat komputer untuk pekerjaan administrasi & produktivitas</div>
+
+        <div class="label">Microsoft Office</div>
+        <div class="value">Menguasai Microsoft Word, Excel, dan PowerPoint</div>
+
+        <div class="label">Desain Grafis Dasar</div>
+        <div class="value">Menggunakan Canva untuk desain sederhana</div>
+
+        <div class="label">Komunikasi & Organisasi</div>
+        <div class="value">Berpengalaman memimpin organisasi & kerja tim</div>
+
+        <div class="label">Teknologi Informasi</div>
+        <div class="value">Pemahaman dasar jaringan & troubleshooting ringan</div>
+      </div>
+    </section>
+
+  </div> 
+</div> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<script src="assets/script.js"></script>
+
+</body>
+</html>

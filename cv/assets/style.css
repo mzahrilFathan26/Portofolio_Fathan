@@ -1,0 +1,107 @@
+:root {
+  --primary: #2aa79b;
+  --bg: #ffffff;
+  --text: #1e1e1e;
+  --card: #f5f8f8;
+}
+body.dark {
+  --bg: #0f1314;
+  --text: #e8e8e8;
+  --card: #1a1f21;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", sans-serif;
+  transition: 0.3s ease;
+}
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+}
+.toolbar {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+button {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: 0.2s;
+}
+button:hover {
+  opacity: 0.85;
+}
+.header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--primary);
+}
+.header img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--primary);
+}
+.header h1 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+}
+.header p {
+  margin: 5px 0 0;
+  color: var(--primary);
+  font-weight: 600;
+}
+section {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 14px;
+  margin-top: 25px;
+  border-left: 5px solid var(--primary);
+}
+section h2 {
+  margin-top: 0;
+  color: var(--primary);
+  font-size: 20px;
+  font-weight: 700;
+}
+.table {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  row-gap: 12px;
+  column-gap: 25px;
+  align-items: start;
+}
+.table div.label {
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 15px;
+}
+.table div.value {
+  font-size: 15px;
+  font-weight: 500;
+}
+.entry {
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+.entry span {
+  font-weight: 700;
+  color: var(--primary);
+}
