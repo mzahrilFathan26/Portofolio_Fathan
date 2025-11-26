@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="assets/style.css">
+<title>Sertifikat – Portfolio</title>
+
+
+</head>
+<body>
+
+<header>
+  <img src="../cv/images/fathan.png" alt="Foto Profil" class="profile-photo">
+  <h1>My Certificates</h1>
+  <p class="subtitle">Menampilkan semua sertifikat</p>
+</header>
+
+
+<!-- FILTER LEVEL 1 -->
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="filterMain('all')">📁 Semua</button>
+  <button class="filter-btn" onclick="filterMain('school')">🏫 School</button>
+  <!--<button class="filter-btn" onclick="filterMain('campus')">🎓 Campus</button>-->
+  <!--<button class="filter-btn" onclick="filterMain('workshop')">🛠️ Workshop</button>-->
+  <!--<button class="filter-btn" onclick="filterMain('seminar')">💻 Seminar</button>-->
+  <button class="filter-btn" onclick="filterMain('seminar')">🧑‍🏫 Seminar</button>
+
+</div>
+
+<!-- FILTER LEVEL 2 -->
+<div class="sub-filter-bar" id="subFilterBar"></div>
+
+<!-- LIST CERTIFICATE -->
+<div class="cert-list" id="certContainer">
+
+  <!-- SCHOOL – OSIS -->
+  <div class="cert-card" style="--i:1" data-cat="school" data-sub="osis"
+    onclick="openPopup('sertifikat/1 (1).JPG','Ketua OSIS','School – OSIS')">
+    <img src="sertifikat/1 (1).JPG" loading="lazy">
+    <h3>Ketua OSIS</h3>
+    <p>School – Ketua OSIS</p>
+  </div>
+
+  <!-- SCHOOL – LOMBA -->
+  <div class="cert-card" style="--i:2" data-cat="school" data-sub="FPSH"
+    onclick="openPopup('sertifikat/1 (2).JPG','Duta Hukum Dan HAM Jawa Barat 2024','School – fpsh')">
+    <img src="sertifikat/1 (2).JPG" loading="lazy">
+    <h3>Duta Hukum Dan HAM Jawa Barat 2024</h3>
+    <p>School – FPSH</p>
+  </div>
+
+  <!-- SCHOOL – EKSKUL -->
+  <div class="cert-card" style="--i:2" data-cat="school" data-sub="FPSH"
+    onclick="openPopup('sertifikat/1 (3).JPG','Duta Hukum Dan HAM Jawa Barat 2024','School – fpsh')">
+    <img src="sertifikat/1 (3).JPG" loading="lazy">
+    <h3>Duta Hukum Dan HAM Jawa Barat 2024</h3>
+    <p>School – FPSH</p>
+  </div>
+
+  <div class="cert-card" style="--i:2" data-cat="school" data-sub="PASKIBRA"
+    onclick="openPopup('sertifikat/1 (4).JPG','PASKIBRA Kec. Lemgkong 2024','School – PASKIBRA')">
+    <img src="sertifikat/1 (4).JPG" loading="lazy">
+    <h3>Duta Hukum Dan HAM Jawa Barat 2024</h3>
+    <p>School – PASKIBRA – Kecamatan</p>
+  </div>
+
+
+  <div class="cert-card" style="--i:2" data-cat="school" data-sub="FOKSI"
+    onclick="openPopup('sertifikat/1 (5).JPG','Peserta MUREG','School – FOKSI')">
+    <img src="sertifikat/1 (5).JPG" loading="lazy">
+    <h3>Peserta MUREG</h3>
+    <p>School – FOKSI – Kabupaten</p>
+  </div>
+
+
+  <div class="cert-card" style="--i:2" data-cat="school" data-sub="FOKSI"
+    onclick="openPopup('sertifikat/1 (7).JPG','Peserta MUREG','School – FOKSI')">
+    <img src="sertifikat/1 (7).JPG" loading="lazy">
+    <h3>Anggoga Divisi KOMINFO Regional 2</h3>
+    <p>School – FOKSI – Kabupaten</p>
+  </div>
+
+      <div class="cert-card" style="--i:2" data-cat="seminar" data-sub="SENAPADMA"
+    onclick="openPopup('sertifikat/1 (8).png','Peserta SENAPADMA','SKPI – SENAPADMA')">
+    <img src="sertifikat/1 (8).png" loading="lazy">
+    <h3>Peserta SENAPADMA</h3>
+    <p>SKPI – Kampus – Pramuka</p>
+  </div>
+
+  <div class="cert-card" style="--i:2" data-cat="school" data-sub="PRAMUKA"
+    onclick="openPopup('sertifikat/1 (6).JPG','Peserta JOTA JOTI','School – PRAMUKA')">
+    <img src="sertifikat/1 (6).JPG" loading="lazy">
+    <h3>Peserta JOTA JOTI</h3>
+    <p>School – Pramuka</p>
+  </div>
+
+
+
+
+  <!-- CAMPUS 
+  <div class="cert-card" style="--i:4" data-cat="campus"
+    onclick="openPopup('images/c.png','Organisasi Kampus','Campus')">
+    <img src="images/c.png" loading="lazy">
+    <h3>Organisasi Kampus</h3>
+    <p>Campus</p>
+  </div>
+
+  <div class="cert-card" style="--i:5" data-cat="workshop"
+    onclick="openPopup('images/c.png','Workshop UI/UX','Workshop')">
+    <img src="images/c.png" loading="lazy">
+    <h3>Workshop UI/UX</h3>
+    <p>Workshop</p>
+  </div>
+
+  <div class="cert-card" style="--i:6" data-cat="webinar"
+    onclick="openPopup('images/c.png','Webinar Keahlian Digital','Webinar')">
+    <img src="images/c.png" loading="lazy">
+    <h3>Webinar Keahlian Digital</h3>
+    <p>Webinar</p>
+  </div>
+
+</div>
+-->
+<!-- POPUP PREVIEW -->
+<div class="popup-bg" id="popupBg">
+  <div class="popup-box" id="popupBox">
+    <div class="close-btn" onclick="closePopup()">✖</div>
+    <img id="popupImg" src="">
+    <h3 id="popupTitle"></h3>
+    <p id="popupCat"></p>
+  </div>
+</div>
+
+<script src="assets/script.js">
+
+</script>
+
+</body>
+</html>
