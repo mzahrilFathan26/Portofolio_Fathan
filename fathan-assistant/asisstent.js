@@ -176,7 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }
     } else {
-      botTyping("Maaf, menu tidak tersedia. Silakan ketik: CV, Sertifikat, Sosial Media, Kontak, Tentang.");
+      botTyping("Maaf, menu tidak tersedia. Silakan ketik: Beranda, Sosial Media, Sertifikat, MyTube, Blog, CV, Code, Kontak, Tentang. Silakan ketik menu pilih kembali.");
     }
   }
 
