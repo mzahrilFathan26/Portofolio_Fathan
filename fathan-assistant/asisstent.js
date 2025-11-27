@@ -22,26 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
     preciseScroll();
   }
 
-  function botMessage(text, callbackAfter = null) {
-    addBubble(`
-      <div class="chat-bubble">
-        <div class="avatar bot-avatar"></div>
-        <div class="msg-assistant">${text}</div>
-      </div>
-    `);
-    if (callbackAfter) callbackAfter();
-  }
-
-  function userMessage(text) {
-    sendSound.play();
-    addBubble(`
-      <div class="chat-bubble" style="justify-content:right;">
-        <div class="msg-user">${text}</div>
-        <div class="avatar user-avatar"></div>
-      </div>
-    `);
-  }
-
   function botTyping(callbackText, callbackAfter = null) {
     addBubble(`
       <div id="typingIndicator" class="chat-bubble">
