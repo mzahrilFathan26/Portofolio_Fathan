@@ -1,0 +1,201 @@
+/* =============================
+   TOMBOL ASSISTANT
+============================= */
+#assistantButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #2aa79b;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 22px;
+  z-index: 9999;
+}
+
+/* =============================
+   WIDGET ASSISTANT
+============================= */
+#assistantWidget {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 320px;
+  height: 420px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+.assistant-hidden {
+  display: none !important;
+}
+
+/* =============================
+   HEADER
+============================= */
+.assistant-header {
+  background: #2aa79b;
+  color: white;
+  padding: 12px;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* =============================
+   AREA PESAN
+============================= */
+#assistantMessages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 14px;
+  padding-bottom: 80px; /* ruang agar chat terakhir tidak tertutup input */
+  height: calc(100% - 75px);
+  box-sizing: border-box;
+}
+
+/* =============================
+   ANIMASI BUBBLE
+============================= */
+@keyframes bubbleFade {
+  0% { opacity: 0; transform: translateY(8px) scale(0.96); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.chat-bubble {
+  animation: bubbleFade 0.25s ease-out;
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  margin-bottom: 8px; /* jarak antar bubble lebih rapat */
+}
+
+/* =============================
+   AVATAR
+============================= */
+.avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+
+.user-avatar {
+  background: url('https://i.ibb.co/W3qf1p8/user.png') center/cover;
+}
+
+.bot-avatar {
+  background: url('https://i.ibb.co/CPXcJ8L/robot.png') center/cover;
+}
+
+/* =============================
+   BUBBLE PESAN
+============================= */
+.msg-assistant {
+  background: #f1f1f1;
+  padding: 5px 12px;
+  border-radius: 50px;
+  margin-bottom: 8px; /* jarak antar chat bot lebih rapat */
+  max-width: 75%;
+  color: #333;
+  margin-left: -30px;
+}
+
+.msg-user {
+  background: #2aa79b;
+  padding: 10px 12px;
+  border-radius: 10px;
+  max-width: 75%;
+  color: white;
+  margin-right: -30px;
+}
+
+/* =============================
+   INPUT CHAT FIXED DI BAWAH
+============================= */
+.assistant-input {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 14px;
+  display: flex;
+  gap: 10px;
+  background: #fff;
+  border-top: 1px solid #ddd;
+  box-sizing: border-box;
+}
+
+.assistant-input input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.assistant-input button {
+  background: #2aa79b;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Tombol menghilang (zoom out) */
+.btn-hide {
+  animation: zoomOut 0.25s forwards ease;
+}
+
+/* Tombol muncul lagi (zoom in) */
+.btn-show {
+  animation: zoomIn 0.25s forwards ease;
+}
+
+@keyframes zoomOut {
+  from { transform: scale(1); opacity: 1; }
+  to { transform: scale(0.5); opacity: 0; }
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Widget animasi buka-tutup */
+.assistant-open {
+  animation: fadeInUp 0.25s ease forwards;
+}
+
+.assistant-close {
+  animation: fadeOutDown 0.25s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOutDown {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(20px); }
+}
+
+/* Tombol X efek klik */
+#assistantClose {
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  cursor: pointer;
+}
+
+/* Efek saat diklik */
+.close-animate {
+  transform: scale(0.7) rotate(20deg);
+  opacity: 0.4;
+}

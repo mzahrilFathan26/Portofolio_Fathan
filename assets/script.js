@@ -125,22 +125,3 @@ const imgObserver = new IntersectionObserver((entries, observer) => {
 lazyImages.forEach(img => imgObserver.observe(img));
 
 
-  const btn = document.getElementById("assistant-btn");
-  const panel = document.getElementById("assistant-panel");
-
-  btn.onclick = () => {
-    panel.style.display = panel.style.display === "block" ? "none" : "block";
-  };
-
-  document.querySelectorAll(".assistant-menu").forEach(menu => {
-    menu.addEventListener("click", () => {
-      let target = menu.getAttribute("data-target");
-      let el = document.querySelector(target);
-
-      if(el){
-        el.scrollIntoView({ behavior: "smooth" });
-      }
-
-      panel.style.display = "none";
-    });
-  });

@@ -35,6 +35,7 @@
       class="lazy-load"
     />
     <link rel="stylesheet" href="assets/style.css" />
+        <link rel="stylesheet" href="fathan-assistant/asisstent.css" />
     <script defer src="assets/script.js"></script>
     <!-- FontAwesome untuk icon sosial -->
     <script
@@ -290,24 +291,27 @@
           </div>
         </div>
       </article>
+   </main>
 
-      <!-- Clients, Blog, Contact Sections bisa ditambahkan disini sesuai kebutuhan -->
-    </main>
-<div id="assistant-container">
-  <button id="assistant-btn">🤖</button>
+<button id="assistantButton">💬</button>
 
-  <div id="assistant-panel">
-    <h3>Halo! Saya Fathan Assistant 👋</h3>
-    <p>Ada yang bisa saya bantu?</p>
+<div id="assistantWidget" class="assistant-hidden">
+  <div class="assistant-header">
+    <span>Fathan Assistant</span>
+    <button id="assistantClose">×</button>
+  </div>
 
-    <div class="assistant-menu" data-target="#home">🏠 Beranda</div>
-    <div class="assistant-menu" data-target="#about">👤 Tentang Saya</div>
-    <div class="assistant-menu" data-target="#skills">🛠 Skills</div>
-    <div class="assistant-menu" data-target="#certificates">📜 Sertifikat</div>
-    <div class="assistant-menu" data-target="#portfolio">📁 Project</div>
-    <div class="assistant-menu" data-target="#contact">📞 Kontak</div>
+  <div id="assistantMessages"></div>
+
+  <div class="assistant-input">
+    <input id="assistantInput" placeholder="Tulis pesan...">
+    <button id="assistantSend">Kirim</button>
   </div>
 </div>
+
+<script src="fathan-assistant/asisstent.js" defer></script>
+</body>
+</html>
 
     <footer class="footer" id="contact">
       <div class="container">
@@ -315,6 +319,6 @@
       </div>
     </footer>
 
-    <!--<button id="scrollTopBtn" title="Scroll ke atas">▲</button>-->
+    <!--<button id="scrollTopBtn" title="Scroll ke atas">▲</button>
   </body>
 </html>
