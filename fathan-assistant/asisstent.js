@@ -8,8 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const sendSound = new Audio("https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3");
 
-  let currentMenu = "main"; // main / kontak
-  let pendingRedirect = null; // simpan URL yang akan dialihkan
+  let currentMenu = "main"; // main / kontak / Sosial Media
+  let pendingRedirect = null;
 
   function preciseScroll() {
     setTimeout(() => {
@@ -22,6 +22,26 @@ document.addEventListener("DOMContentLoaded", () => {
     preciseScroll();
   }
 
+  function botMessage(text, callbackAfter = null) {
+    addBubble(`
+      <div class="chat-bubble">
+        <div class="avatar bot-avatar"></div>
+        <div class="msg-assistant">${text}</div>
+      </div>
+    `);
+    if (callbackAfter) callbackAfter();
+  }
+
+  function userMessage(text) {
+    sendSound.play();
+    addBubble(`
+      <div class="chat-bubble" style="justify-content:right;">
+        <div class="msg-user">${text}</div>
+        <div class="avatar user-avatar"></div>
+      </div>
+    `);
+  }
+
   function botTyping(callbackText, callbackAfter = null) {
     addBubble(`
       <div id="typingIndicator" class="chat-bubble">
@@ -29,13 +49,10 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="msg-assistant"><i>Assistant sedang mengetik...</i></div>
       </div>
     `);
-
     preciseScroll();
-
     setTimeout(() => {
       const typing = document.getElementById("typingIndicator");
       if (typing) typing.remove();
-
       botMessage(callbackText, callbackAfter);
     }, 900);
   }
@@ -52,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setTimeout(() => {
       botTyping("Halo! Saya Fathan Assistant. Ada yang bisa saya bantu?", () => {
-        botTyping("Baik! Fitur portfolio tersedia seperti: Beranda, Sertifikat, MyTube, Blog, CV, Code, Kontak, Tentang. Silakan ketik menu pilihan Anda.");
+        botTyping("Baik! Fitur portfolio tersedia seperti: Beranda, Sosial Media, Sertifikat, MyTube, Blog, CV, Code, Kontak, Tentang. Silakan ketik menu pilihan Anda.");
       });
     }, 300);
 
@@ -78,6 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 300);
   });
 
+  // Menu utama (tanpa Sosial Media)
   const menuMap = {
     "Beranda": "https://mzahrilfathan26.github.io/Portofolio_Fathan/#home",
     "MyTube": "https://mzahrilfathan26.github.io/Portofolio_Fathan/video/Mytube.html",
@@ -86,7 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "Sertifikat": "https://mzahrilfathan26.github.io/Portofolio_Fathan/certificates/certificates.html",
     "Code": "https://mzahrilfathan26.github.io/Portofolio_Fathan/code/code.html",
     "Kontak": "kontak",
-    "Tentang": "tentang" // menu khusus
+    "Tentang": "tentang"
   };
 
   function sendMessage() {
@@ -96,18 +114,44 @@ document.addEventListener("DOMContentLoaded", () => {
     userMessage(text);
     input.value = "";
 
+    const textLower = text.toLowerCase();
     const textCapitalized = text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
 
-    // Jika sedang di submenu kontak
+    // Menu Sosial Media
+    if (textLower === "sosial media") {
+      currentMenu = "Sosial Media";
+      botTyping("Silakan pilih sosial media: Tiktok atau Instagram.");
+      return;
+    }
+
+    // Submenu Sosial Media
+    if (currentMenu === "Sosial Media") {
+      if (textLower === "tiktok") {
+        botTyping("Mengalihkan ke Tiktok...", () => {
+          window.open("https://www.tiktok.com/@zhrl.fthn?_r=1&_t=ZS-91kl6UoQTw2", "_blank");
+          currentMenu = "main";
+        });
+      } else if (textLower === "instagram") {
+        botTyping("Mengalihkan ke Instagram...", () => {
+          window.open("https://www.instagram.com/highmorn?igsh=dXRrYnJvaTc1YTNk&utm_source=qr", "_blank");
+          currentMenu = "main";
+        });
+      } else {
+        botTyping("Silakan ketik 'Tiktok' atau 'Instagram'.");
+      }
+      return;
+    }
+
+    // Submenu Kontak
     if (currentMenu === "kontak") {
-      if (textCapitalized === "Whatsapp") {
+      if (textLower === "whatsapp") {
         botTyping("Mengalihkan ke WhatsApp...", () => {
           window.open("https://wa.me/+6285121046062", "_blank");
           currentMenu = "main";
         });
-      } else if (textCapitalized === "Email") {
+      } else if (textLower === "email") {
         botTyping("Mengalihkan ke Email...", () => {
-          window.location.href = "mailto:muhamad.irpan260626@gmail.com";
+          window.open("mailto:muhamad.irpan260626@gmail.com", "_blank");
           currentMenu = "main";
         });
       } else {
@@ -118,22 +162,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Menu utama
     if (menuMap[textCapitalized]) {
-      if (textCapitalized === "Kontak") {
+      if (textLower === "kontak") {
         currentMenu = "kontak";
         botTyping("Silakan pilih metode kontak dengan mengetik: WhatsApp atau Email.");
-      } else if (textCapitalized === "Tentang") {
+      } else if (textLower === "tentang") {
         botTyping(
           `Halo! Perkenalkan, saya Muhammad Irpan, lahir pada 26 Juni 2006. Saya menyelesaikan pendidikan terakhir di SMKS Harpan Bangsa dan saat ini sedang menempuh S1 di Universitas Nusa Putra.`
         );
       } else {
-        // set URL untuk dialihkan setelah pesan muncul
         pendingRedirect = menuMap[textCapitalized];
         botTyping(`Mengalihkan ke ${textCapitalized}...`, () => {
-          window.location.href = pendingRedirect;
+          window.open(pendingRedirect, "_blank");
         });
       }
     } else {
-      botTyping("Maaf, menu tidak tersedia. Silakan ketik: CV, Sertifikat, Proyek, Kontak, Tentang.");
+      botTyping("Maaf, menu tidak tersedia. Silakan ketik: CV, Sertifikat, Sosial Media, Kontak, Tentang.");
     }
   }
 
