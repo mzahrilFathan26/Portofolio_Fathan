@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setTimeout(() => {
       botTyping("Halo! Saya Fathan Assistant. Ada yang bisa saya bantu?", () => {
-        botTyping("Baik! Fitur portfolio tersedia seperti: Beranda, Sertifikat, Proyek, Kontak, Tentang. Silakan ketik menu pilihan Anda.");
+        botTyping("Baik! Fitur portfolio tersedia seperti: Beranda, Sertifikat, MyTube, Blog, CV, Code, Kontak, Tentang. Silakan ketik menu pilihan Anda.");
       });
     }, 300);
 
@@ -100,7 +100,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const menuMap = {
     "Beranda": "https://mzahrilfathan26.github.io/Portofolio_Fathan/#home",
-    "Portfolio": "https://mzahrilfathan26.github.io/Portofolio_Fathan/#portfolio",
     "MyTube": "https://mzahrilfathan26.github.io/Portofolio_Fathan/video/Mytube.html",
     "Blog": "https://mzahrilfathan26.github.io/Portofolio_Fathan/blog/blog.html",
     "CV": "https://mzahrilfathan26.github.io/Portofolio_Fathan/cv/cv.html",
