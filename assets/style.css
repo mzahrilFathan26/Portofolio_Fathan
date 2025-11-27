@@ -909,6 +909,125 @@ main {
   outline: none;
 }
 
+<!-- Asisten Chat Mini -->
+<>
+  #mini-assistant {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 9999;
+    font-family: system-ui, sans-serif;
+  }
+  #ma-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: #0ea5a4; /* warna sesuai tema Anda */
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+  }
+  #ma-panel {
+    display: none;
+    position: fixed;
+    right: 24px;
+    bottom: 90px;
+    width: 300px;
+    max-width: 90vw;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.22);
+    overflow: hidden;
+    flex-direction: column;
+  }
+  #ma-header {
+    padding: 16px;
+    background: #065f5a;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  #ma-body {
+    padding: 12px;
+  }
+  .ma-menu {
+    display: block;
+    padding: 12px 10px;
+    margin: 6px 0;
+    background: #f7fffd;
+    color: #065f5a;
+    text-decoration: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .ma-menu:hover {
+    background: #e0fffa;
+  }
+  #ma-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+  }
+ #assistant-wrapper {
+    position: fixed !important;
+    right: 20px !important;
+    bottom: 20px !important;
+    z-index: 999999 !important;
+    font-family: Arial, sans-serif;
+  }
+
+  #assistant-btn {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: #0ea5a4;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 28px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  }
+
+  #assistant-panel {
+    display: none;
+    position: fixed !important;
+    right: 20px !important;
+    bottom: 90px !important;
+    width: 300px;
+    background: white;
+    border-radius: 12px;
+    z-index: 999999;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.4);
+    overflow: hidden;
+  }
+
+  #assistant-header {
+    background: #0ea5a4;
+    padding: 15px;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+  }
+
+  .assistant-menu {
+    display: block;
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    color: #0ea5a4;
+    font-weight: 500;
+  }
+  .assistant-menu:hover {
+    background: #e8fffc;
+  }
+
 /* Responsive Contact Section */
 
 /* Tablet (600px - 899px) */
