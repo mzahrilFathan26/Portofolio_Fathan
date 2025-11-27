@@ -103,9 +103,9 @@ document.addEventListener("DOMContentLoaded", () => {
     "Portfolio": "https://mzahrilfathan26.github.io/Portofolio_Fathan/#portfolio",
     "MyTube": "https://mzahrilfathan26.github.io/Portofolio_Fathan/video/Mytube.html",
     "Blog": "https://mzahrilfathan26.github.io/Portofolio_Fathan/blog/blog.html",
-    "CV": "file:///C:/Users/asus/achiakuta/porto/cv/cv.html",
-    "Sertifikat": "file:///C:/Users/asus/achiakuta/porto/certificates/certificates.html",
-    "Code": "file:///C:/Users/asus/achiakuta/porto/certificates/certificates.html",
+    "CV": "https://mzahrilfathan26.github.io/Portofolio_Fathan/cv/cv.html",
+    "Sertifikat": "https://mzahrilfathan26.github.io/Portofolio_Fathan/certificates/certificates.html",
+    "Code": "https://mzahrilfathan26.github.io/Portofolio_Fathan/code/code.html",
     "Kontak": "kontak",
     "Tentang": "tentang" // menu khusus
   };
