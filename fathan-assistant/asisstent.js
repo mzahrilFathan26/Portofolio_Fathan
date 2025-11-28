@@ -20,16 +20,17 @@ document.addEventListener("DOMContentLoaded", () => {
     "menu": "Baik! Fitur portfolio tersedia seperti: Beranda, Sosial Media, Sertifikat, MyTube, Blog, CV, Code, Kontak, Tentang. Silakan ketik menu pilihan Anda."
   };
 
+  // Semua key menu dibuat lowercase
   const menuMap = {
-    "Beranda": "https://mzahrilfathan26.github.io/Portofolio_Fathan/#home",
-    "MyTube": "https://mzahrilfathan26.github.io/Portofolio_Fathan/video/Mytube.html",
-    "Blog": "https://mzahrilfathan26.github.io/Portofolio_Fathan/blog/blog.html",
-    "CV": "https://mzahrilfathan26.github.io/Portofolio_Fathan/cv/cv.html",
-    "Sertifikat": "https://mzahrilfathan26.github.io/Portofolio_Fathan/certificates/certificates.html",
-    "Code": "https://mzahrilfathan26.github.io/Portofolio_Fathan/code/code.html",
-    "Kontak": "kontak",
-    "Tentang": "tentang",
-    "Sosial Media": "sosial media"
+    "beranda": "https://mzahrilfathan26.github.io/Portofolio_Fathan/#home",
+    "mytube": "https://mzahrilfathan26.github.io/Portofolio_Fathan/video/Mytube.html",
+    "blog": "https://mzahrilfathan26.github.io/Portofolio_Fathan/blog/blog.html",
+    "cv": "https://mzahrilfathan26.github.io/Portofolio_Fathan/cv/cv.html",
+    "sertifikat": "https://mzahrilfathan26.github.io/Portofolio_Fathan/certificates/certificates.html",
+    "code": "https://mzahrilfathan26.github.io/Portofolio_Fathan/code/code.html",
+    "kontak": "kontak",
+    "tentang": "tentang",
+    "sosial media": "sosial media"
   };
 
   function preciseScroll() {
@@ -123,7 +124,6 @@ document.addEventListener("DOMContentLoaded", () => {
     input.value = "";
 
     const textLower = text.toLowerCase();
-    const textCapitalized = text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
 
     // === Chat AI Ringkas ===
     if (faq[textLower]) {
@@ -173,20 +173,25 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Menu utama
-    if (menuMap[textCapitalized]) {
-      if (textLower === "kontak") {
-        currentMenu = "kontak";
-        botTyping("Silakan pilih metode kontak dengan mengetik: WhatsApp atau Email.");
-      } else if (textLower === "tentang") {
-        botTyping(
-          `Halo! Perkenalkan, saya Muhammad Irpan, lahir pada 26 Juni 2006. Saya menyelesaikan pendidikan terakhir di SMKS Harpan Bangsa dan saat ini sedang menempuh S1 di Universitas Nusa Putra.`
-        );
-      } else {
-        pendingRedirect = menuMap[textCapitalized];
-        botTyping(`Mengalihkan ke ${textCapitalized}...`, () => {
-          window.open(pendingRedirect, "_blank");
-        });
+    // Menu utama (case-insensitive)
+    if (menuMap[textLower]) {
+      switch (textLower) {
+        case "kontak":
+          currentMenu = "kontak";
+          botTyping("Silakan pilih metode kontak dengan mengetik: WhatsApp atau Email.");
+          break;
+        case "tentang":
+          botTyping("Halo! Perkenalkan, saya Muhammad Irpan, lahir pada 26 Juni 2006. Saya menyelesaikan pendidikan terakhir di SMKS Harpan Bangsa dan saat ini sedang menempuh S1 di Universitas Nusa Putra.");
+          break;
+        case "sosial media":
+          currentMenu = "Sosial Media";
+          botTyping("Silakan pilih sosial media: Tiktok atau Instagram.");
+          break;
+        default:
+          pendingRedirect = menuMap[textLower];
+          botTyping(`Mengalihkan ke ${text}...`, () => {
+            window.open(pendingRedirect, "_blank");
+          });
       }
     } else {
       botTyping("Maaf, menu tidak tersedia. Silakan ketik: Beranda, Sosial Media, Sertifikat, MyTube, Blog, CV, Code, Kontak, Tentang. Silakan ketik menu pilih kembali.");
