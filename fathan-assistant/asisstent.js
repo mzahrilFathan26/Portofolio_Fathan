@@ -11,10 +11,29 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentMenu = "main"; // main / kontak / Sosial Media
   let pendingRedirect = null;
 
+  // === CHAT AI RINGKAS ===
+  const faq = {
+    "siapa kamu": "Saya Fathan Assistant, asisten virtual Muhammad Irpan.",
+    "umur kamu": "Saya lahir pada 26 Juni 2006.",
+    "universitas": "Saat ini saya kuliah di Universitas Nusa Putra.",
+    "pendidikan terakhir": "Saya menyelesaikan pendidikan terakhir di SMKS Harpan Bangsa.",
+    "menu": "Baik! Fitur portfolio tersedia seperti: Beranda, Sosial Media, Sertifikat, MyTube, Blog, CV, Code, Kontak, Tentang. Silakan ketik menu pilihan Anda."
+  };
+
+  const menuMap = {
+    "Beranda": "https://mzahrilfathan26.github.io/Portofolio_Fathan/#home",
+    "MyTube": "https://mzahrilfathan26.github.io/Portofolio_Fathan/video/Mytube.html",
+    "Blog": "https://mzahrilfathan26.github.io/Portofolio_Fathan/blog/blog.html",
+    "CV": "https://mzahrilfathan26.github.io/Portofolio_Fathan/cv/cv.html",
+    "Sertifikat": "https://mzahrilfathan26.github.io/Portofolio_Fathan/certificates/certificates.html",
+    "Code": "https://mzahrilfathan26.github.io/Portofolio_Fathan/code/code.html",
+    "Kontak": "kontak",
+    "Tentang": "tentang",
+    "Sosial Media": "sosial media"
+  };
+
   function preciseScroll() {
-    setTimeout(() => {
-      msgBox.scrollTop = msgBox.scrollHeight + 200;
-    }, 80);
+    setTimeout(() => { msgBox.scrollTop = msgBox.scrollHeight + 200; }, 80);
   }
 
   function addBubble(html) {
@@ -57,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 900);
   }
 
-  // Buka widget
+  // === Buka Widget ===
   btn.addEventListener("click", () => {
     btn.classList.add("btn-hide");
     setTimeout(() => { btn.style.display = "none"; }, 250);
@@ -76,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
     input.focus();
   });
 
-  // Tutup widget
+  // === Tutup Widget ===
   closeBtn.addEventListener("click", () => {
     closeBtn.classList.add("close-animate");
     box.classList.add("assistant-close");
@@ -95,18 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 300);
   });
 
-  // Menu utama (tanpa Sosial Media)
-  const menuMap = {
-    "Beranda": "https://mzahrilfathan26.github.io/Portofolio_Fathan/#home",
-    "MyTube": "https://mzahrilfathan26.github.io/Portofolio_Fathan/video/Mytube.html",
-    "Blog": "https://mzahrilfathan26.github.io/Portofolio_Fathan/blog/blog.html",
-    "CV": "https://mzahrilfathan26.github.io/Portofolio_Fathan/cv/cv.html",
-    "Sertifikat": "https://mzahrilfathan26.github.io/Portofolio_Fathan/certificates/certificates.html",
-    "Code": "https://mzahrilfathan26.github.io/Portofolio_Fathan/code/code.html",
-    "Kontak": "kontak",
-    "Tentang": "tentang"
-  };
-
+  // === Send Message ===
   function sendMessage() {
     const text = input.value.trim();
     if (!text) return;
@@ -117,6 +125,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const textLower = text.toLowerCase();
     const textCapitalized = text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
 
+    // === Chat AI Ringkas ===
+    if (faq[textLower]) {
+      botTyping(faq[textLower]);
+      return;
+    }
+
     // Menu Sosial Media
     if (textLower === "sosial media") {
       currentMenu = "Sosial Media";
@@ -124,7 +138,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Submenu Sosial Media
     if (currentMenu === "Sosial Media") {
       if (textLower === "tiktok") {
         botTyping("Mengalihkan ke Tiktok...", () => {
@@ -133,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       } else if (textLower === "instagram") {
         botTyping("Mengalihkan ke Instagram...", () => {
-          window.open("https://www.instagram.com/highmorn?igsh=dXRrYnJvaTc1YTNk&utm_source=qr", "_blank");
+          window.open("https://www.instagram.com/highmorn", "_blank");
           currentMenu = "main";
         });
       } else {
@@ -142,7 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Submenu Kontak
+    // Menu Kontak
     if (currentMenu === "kontak") {
       if (textLower === "whatsapp") {
         botTyping("Mengalihkan ke WhatsApp...", () => {
