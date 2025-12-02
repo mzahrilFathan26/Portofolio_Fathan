@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ucapan Terima Kasih</title>
+<style>
+    body {
+        margin: 0;
+        background: #f6f6f6;
+        font-family: 'Poppins', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .wrapper {
+        text-align: center;
+        position: relative;
+    }
+
+    /* Amplop */
+    .envelope {
+        width: 350px;
+        height: 220px;
+        position: relative;
+        margin: auto;
+    }
+
+    /* Bagian belakang amplop */
+    .back {
+        width: 100%;
+        height: 100%;
+        background: white;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+
+    /* Lipatan depan (flap) */
+    .flap {
+        width: 100%;
+        height: 100%;
+        background: white;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        clip-path: polygon(0 0, 100% 0, 50% 55%);
+        transform-origin: top;
+        transition: transform 1s ease-in-out;
+        z-index: 3;
+    }
+
+    /* Bagian dalam amplop */
+    .inside {
+        width: 100%;
+        height: 100%;
+        background: #fafafa;
+        border-radius: 8px;
+        position: absolute;
+        top: 0;
+        z-index: 0;
+        border: 2px solid #ddd;
+    }
+
+    /* Foto */
+    .photo {
+        width: 230px;
+        height: 230px;
+        background: #ccc;
+        object-fit: cover;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        position: absolute;
+        top: 110px;
+        left: 50%;
+        transform: translateX(-50%) translateY(60px);
+        opacity: 0;
+        transition: transform 1.2s ease, opacity 1.2s ease;
+        z-index: 0;
+    }
+
+    /* Tombol Open */
+    #openBtn {
+        margin-top: 20px;
+        padding: 12px 30px;
+        background: #2aa79b;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    #openBtn:hover {
+        background: #1e8278;
+    }
+
+    /* Ucapan */
+    .thanks {
+        opacity: 0;
+        font-size: 30px;
+        margin-top: 300px;
+        transition: 1.5s ease;
+        color: #333;
+        font-weight: 600;
+    }
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+
+    <div class="envelope">
+        <div class="inside"></div>
+        <div class="back"></div>
+        <div class="flap"></div>
+    </div>
+
+    <img id="photo" class="photo" src="https://via.placeholder.com/300">
+
+    <button id="openBtn">Open Envelope</button>
+
+    <div id="thanksText" class="thanks">Terima kasih banyak! ❤️</div>
+
+</div>
+
+<script>
+document.getElementById("openBtn").onclick = () => {
+    const flap = document.querySelector(".flap");
+    const photo = document.getElementById("photo");
+    const thanks = document.getElementById("thanksText");
+
+    // Animasi buka amplop
+    flap.style.transform = "rotateX(160deg)";
+
+    // Foto naik dari dalam amplop
+    setTimeout(() => {
+        photo.style.opacity = 1;
+        photo.style.transform = "translateX(-50%) translateY(-170px)";
+    }, 900);
+
+    // Ucapan muncul
+    setTimeout(() => {
+        thanks.style.opacity = 1;
+    }, 2000);
+};
+</script>
+
+</body>
+</html>
