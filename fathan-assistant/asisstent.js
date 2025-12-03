@@ -8,52 +8,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const sendSound = new Audio("https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3");
 
-  let currentMenu = "main"; // main / kontak / Sosial Media
+  let currentMenu = "main";
   let pendingRedirect = null;
 
   // === CHAT AI RINGKAS ===
   const faq = {
-    // === Info Pribadi & Portfolio ===
     "siapa kamu": "Saya Fathan Assistant, asisten virtual Muhammad Irpan.",
     "umur kamu": "Saya lahir pada 26 Juni 2006.",
     "universitas": "Saat ini saya kuliah di Universitas Nusa Putra.",
     "pendidikan terakhir": "Saya menyelesaikan pendidikan terakhir di SMKS Harpan Bangsa.",
-    "tentang saya": "Halo! Saya penggemar teknologi yang suka membangun website interaktif, blogging, dan proyek coding pribadi.",
-    "menu": "Baik! Fitur portfolio tersedia: Beranda, Sosial Media, Sertifikat, MyTube, Blog, CV, Code, Kontak, Tentang. Silakan ketik menu pilihan Anda.",
-    
-    // === Portfolio ===
-    "website": "Di portfolio saya ada beberapa proyek: Website Kenangan Kelas, Video Tugas, Blog Pribadi, CV, Sertifikat, dan Coding Code.",
-    "blog": "Blog pribadi saya berisi tulisan, pengalaman, dan ide kreatif.",
-    "cv": "CV saya berisi identitas, pendidikan, pengalaman, dan skill.",
-    "sertifikat": "Sertifikat yang saya peroleh dari sekolah, seminar, dan keahlian.",
-    "code": "Di halaman Coding Code, kamu bisa melihat berbagai kodingan saya.",
-    "mytube": "Video proyek dan tutorial dapat dilihat di MyTube.",
-    
-    // === Pengetahuan Informatika ===
-    "logika": "Logika adalah dasar ilmu komputer. Contoh soal: 'Jika p benar dan q salah, apa hasil p AND q?' → Jawaban: Salah.",
-    "logika dasar": "Logika dasar mempelajari operasi AND, OR, NOT. Contoh: p = benar, q = salah → p OR q = Benar.",
-    "proposisi": "Proposisi adalah pernyataan yang benar atau salah. Contoh: 'Hari ini hujan' adalah proposisi jika bisa ditentukan benar/salah.",
-    
-    "algoritma": "Algoritma adalah urutan langkah untuk menyelesaikan masalah. Contoh soal: 'Buat algoritma mencari nilai maksimum dari array [3,5,1]' → Jawaban: Bandingkan elemen satu per satu dan pilih yang terbesar.",
-    "algoritma dasar": "Algoritma dasar mencakup sorting, searching, dan traversal. Contoh: Bubble sort, Binary search.",
-    "pseudocode": "Pseudocode adalah representasi algoritma sebelum dikoding. Contoh: 'Start, ambil input x, jika x>0 tampilkan positif, else tampilkan negatif, End'.",
-    
-    "struktur data": "Struktur data adalah cara menyimpan data agar efisien. Contoh soal: 'Tentukan struktur data untuk menyimpan daftar nama mahasiswa' → Jawaban: Array atau Linked List.",
-    "array": "Array adalah struktur data linear untuk menyimpan data berurutan.",
-    "linked list": "Linked List adalah struktur data yang elemen-elemennya saling terhubung melalui pointer.",
-    "stack": "Stack adalah struktur data LIFO (Last In First Out). Contoh: Undo di aplikasi teks.",
-    "queue": "Queue adalah struktur data FIFO (First In First Out). Contoh: Antrian printer.",
-    
-    "kalkulus": "Kalkulus mempelajari perubahan dan gerakan. Contoh soal: 'Turunan dari f(x)=x^2?' → Jawaban: f'(x) = 2x.",
-    "turunan": "Turunan digunakan untuk mengetahui laju perubahan fungsi. Contoh: f(x)=x^3 → f'(x)=3x^2",
-    "integral": "Integral digunakan untuk menghitung luas di bawah kurva. Contoh: ∫x dx = x^2/2 + C",
-    
-    "statistika": "Statistika mempelajari pengumpulan dan analisis data. Contoh soal: 'Hitung rata-rata [2,4,6]' → Jawaban: 4.",
-    "rata-rata": "Rata-rata = jumlah data / banyak data. Contoh: [3,5,7] → (3+5+7)/3 = 5",
-    "median": "Median adalah nilai tengah dari data terurut. Contoh: [1,3,5] → Median=3",
-    "modus": "Modus adalah nilai yang paling sering muncul. Contoh: [1,2,2,3] → Modus=2"
+    "menu": "Baik! Fitur portfolio tersedia seperti: Beranda, Sosial Media, Sertifikat, MyTube, Blog, CV, Code, Kontak, Tentang. Silakan ketik menu pilihan Anda."
   };
 
+  // === MENU MAP ===
+  const menuMap = {
+    "beranda": "https://mzahrilfathan26.github.io/Portofolio_Fathan/#home",
+    "mytube": "https://mzahrilfathan26.github.io/Portofolio_Fathan/video/Mytube.html",
+    "blog": "https://mzahrilfathan26.github.io/Portofolio_Fathan/blog/blog.html",
+    "cv": "https://mzahrilfathan26.github.io/Portofolio_Fathan/cv/cv.html",
+    "sertifikat": "https://mzahrilfathan26.github.io/Portofolio_Fathan/certificates/certificates.html",
+    "code": "https://mzahrilfathan26.github.io/Portofolio_Fathan/code/code.html",
+    "kontak": "kontak",
+    "tentang": "tentang",
+    "sosial media": "sosial media"
+  };
+
+  // === SCROLL ===
   function preciseScroll() {
     setTimeout(() => { msgBox.scrollTop = msgBox.scrollHeight + 200; }, 80);
   }
@@ -98,7 +78,64 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 900);
   }
 
-  // === Buka Widget ===
+  // ============================================================
+  // === FUNGSI MATEMATIKA, STATISTIKA, KALKULUS (DITAMBAHKAN) ===
+  // ============================================================
+
+  function evaluateMath(expr) {
+    try {
+      expr = expr.replace(/\^/g, "**");
+      const allowed = {
+        sin: Math.sin,
+        cos: Math.cos,
+        tan: Math.tan,
+        log: Math.log10,
+        ln: Math.log,
+        sqrt: Math.sqrt,
+        abs: Math.abs,
+        pi: Math.PI,
+        e: Math.E
+      };
+      return Function("Math", "with(Math){ return " + expr + "}")(allowed);
+    } catch {
+      return null;
+    }
+  }
+
+  function mean(arr) {
+    return arr.reduce((a, b) => a + b, 0) / arr.length;
+  }
+
+  function median(arr) {
+    arr = [...arr].sort((a, b) => a - b);
+    const mid = Math.floor(arr.length / 2);
+    return arr.length % 2 !== 0 ? arr[mid] : (arr[mid - 1] + arr[mid]) / 2;
+  }
+
+  function mode(arr) {
+    const freq = {};
+    arr.forEach(n => freq[n] = (freq[n] || 0) + 1);
+    let maxFreq = Math.max(...Object.values(freq));
+    return Object.keys(freq).filter(key => freq[key] == maxFreq);
+  }
+
+  function derivative(expr, x0) {
+    const h = 1e-6;
+    const f = (x) => evaluateMath(expr.replace(/x/g, `(${x})`));
+    return (f(x0 + h) - f(x0 - h)) / (2 * h);
+  }
+
+  function integral(expr, a, b, n = 10000) {
+    const f = (x) => evaluateMath(expr.replace(/x/g, `(${x})`));
+    let h = (b - a) / n;
+    let sum = 0.5 * (f(a) + f(b));
+    for (let i = 1; i < n; i++) sum += f(a + i * h);
+    return sum * h;
+  }
+
+  // ==================================================
+
+  // === BUKA WIDGET ===
   btn.addEventListener("click", () => {
     btn.classList.add("btn-hide");
     setTimeout(() => { btn.style.display = "none"; }, 250);
@@ -117,7 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
     input.focus();
   });
 
-  // === Tutup Widget ===
+  // === TUTUP WIDGET ===
   closeBtn.addEventListener("click", () => {
     closeBtn.classList.add("close-animate");
     box.classList.add("assistant-close");
@@ -136,49 +173,85 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 300);
   });
 
-  // === Send Message ===
+  // ==================================================
+  // === KIRIM PESAN ===
+  // ==================================================
   function sendMessage() {
     const text = input.value.trim();
     if (!text) return;
 
     userMessage(text);
     input.value = "";
+    const textLower = text.toLowerCase();
 
-    let textLower = text.toLowerCase();
+    // =========================================================
+    // === DETEKSI MATEMATIKA (ditempatkan paling atas logika) ==
+    // =========================================================
 
-    // === Kalkulator Matematika ===
-    try {
-      // hapus tanda '=' di akhir
-      if (textLower.endsWith("=")) textLower = textLower.slice(0, -1).trim();
-
-      let mathExpr = textLower
-        .replace(/\^/g, "**")             // pangkat
-        .replace(/sin\(/g, "Math.sin(")
-        .replace(/cos\(/g, "Math.cos(")
-        .replace(/tan\(/g, "Math.tan(")
-        .replace(/log\(/g, "Math.log(");
-
-      // konversi derajat → radian untuk sin/cos/tan
-      mathExpr = mathExpr.replace(/Math\.sin\(([^)]+)\)/g, "Math.sin(($1)*Math.PI/180)");
-      mathExpr = mathExpr.replace(/Math\.cos\(([^)]+)\)/g, "Math.cos(($1)*Math.PI/180)");
-      mathExpr = mathExpr.replace(/Math\.tan\(([^)]+)\)/g, "Math.tan(($1)*Math.PI/180)");
-
-      if (/[0-9]/.test(mathExpr) && /[+\-*/%()Math]/.test(mathExpr)) {
-        let result = eval(mathExpr);
-        botTyping(`Hasil: ${result}`);
+    // Turunan: "turunan x^2+3x pada x=5"
+    if (textLower.startsWith("turunan ")) {
+      const match = textLower.match(/turunan (.*) pada x=([\-0-9\.]+)/);
+      if (match) {
+        const expr = match[1];
+        const nilaiX = parseFloat(match[2]);
+        const hasil = derivative(expr, nilaiX);
+        botTyping(`Turunan dari ${expr} pada x=${nilaiX} adalah ${hasil}`);
         return;
       }
-    } catch (err) {
-      // lanjut ke chat biasa jika error
     }
 
-    // === Chat AI Ringkas ===
+    // Integral: "integral x^2 dari 0 sampai 3"
+    if (textLower.startsWith("integral ")) {
+      const match = textLower.match(/integral (.*) dari ([\-0-9\.]+) sampai ([\-0-9\.]+)/);
+      if (match) {
+        const expr = match[1];
+        const a = parseFloat(match[2]);
+        const b = parseFloat(match[3]);
+        const hasil = integral(expr, a, b);
+        botTyping(`Integral dari ${expr} dari ${a} sampai ${b} adalah ${hasil}`);
+        return;
+      }
+    }
+
+    // Fungsi matematika biasa
+    if (/[\d\+\-\*\/\^\(\)x]/.test(textLower)) {
+      const result = evaluateMath(textLower);
+      if (result !== null) {
+        botTyping(`Hasil dari <b>${text}</b> adalah <b>${result}</b>`);
+        return;
+      }
+    }
+
+    // Mean
+    if (textLower.startsWith("mean ")) {
+      const nums = textLower.replace("mean", "").trim().split(/\s+/).map(Number);
+      botTyping(`Mean = ${mean(nums)}`);
+      return;
+    }
+
+    // Median
+    if (textLower.startsWith("median ")) {
+      const nums = textLower.replace("median", "").trim().split(/\s+/).map(Number);
+      botTyping(`Median = ${median(nums)}`);
+      return;
+    }
+
+    // Modus
+    if (textLower.startsWith("modus ") || textLower.startsWith("mode ")) {
+      const nums = textLower.replace(/modus|mode/g, "").trim().split(/\s+/).map(Number);
+      botTyping(`Modus = ${mode(nums).join(", ")}`);
+      return;
+    }
+
+    // =========================================================
+    // === CHAT AI RINGKAS (menu profil dll)
+    // =========================================================
     if (faq[textLower]) {
       botTyping(faq[textLower]);
       return;
     }
 
-    // Menu Sosial Media
+    // Sosial Media
     if (textLower === "sosial media") {
       currentMenu = "Sosial Media";
       botTyping("Silakan pilih sosial media: Tiktok atau Instagram.");
@@ -202,7 +275,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Menu Kontak
+    // Kontak
     if (currentMenu === "kontak") {
       if (textLower === "whatsapp") {
         botTyping("Mengalihkan ke WhatsApp...", () => {
@@ -220,12 +293,12 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Menu utama
+    // MENU UTAMA
     if (menuMap[textLower]) {
       switch (textLower) {
         case "kontak":
           currentMenu = "kontak";
-          botTyping("Silakan pilih metode kontak dengan mengetik: WhatsApp atau Email.");
+          botTyping("Silakan pilih metode kontak: WhatsApp atau Email.");
           break;
         case "tentang":
           botTyping("Halo! Perkenalkan, saya Muhammad Irpan, lahir pada 26 Juni 2006. Saya menyelesaikan pendidikan terakhir di SMKS Harpan Bangsa dan saat ini sedang menempuh S1 di Universitas Nusa Putra.");
@@ -240,9 +313,10 @@ document.addEventListener("DOMContentLoaded", () => {
             window.open(pendingRedirect, "_blank");
           });
       }
-    } else {
-      botTyping("Maaf, menu tidak tersedia. Silakan ketik: Beranda, Sosial Media, Sertifikat, MyTube, Blog, CV, Code, Kontak, Tentang. Silakan ketik menu pilih kembali.");
+      return;
     }
+
+    botTyping("Maaf, menu tidak tersedia. Silakan ketik: Beranda, Sosial Media, Sertifikat, MyTube, Blog, CV, Code, Kontak, Tentang.");
   }
 
   send.addEventListener("click", sendMessage);
