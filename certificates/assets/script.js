@@ -3,7 +3,7 @@ const subCategories = {
   school: ["osis", "FPSH", "PASKIBRA", "FOKSI"],
   campus: ["organisasi", "event"],
   /*workshop: ["uiux", "coding"],*/
-  seminar: ["SENAPADMA"]
+  seminar: ["SENAPADMA", "FPSH"]
 };
 
 /* FILTER LEVEL 1 */
