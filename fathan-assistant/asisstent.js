@@ -22,12 +22,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // === MENU MAP ===
   const menuMap = {
-    "beranda": "https://mzahrilfathan26.github.io/Portofolio_Fathan/#home",
-    "mytube": "https://mzahrilfathan26.github.io/Portofolio_Fathan/video/Mytube.html",
-    "blog": "https://mzahrilfathan26.github.io/Portofolio_Fathan/blog/blog.html",
-    "cv": "https://mzahrilfathan26.github.io/Portofolio_Fathan/cv/cv.html",
-    "sertifikat": "https://mzahrilfathan26.github.io/Portofolio_Fathan/certificates/certificates.html",
-    "code": "https://mzahrilfathan26.github.io/Portofolio_Fathan/code/code.html",
+    "beranda": "https://fathanportfolio26.netlify.app/#home",
+    "mytube": "https://fathanportfolio26.netlify.app/video/mytube",
+    "blog": "https://fathanportfolio26.netlify.app/blog/blog",
+    "cv": "https://fathanportfolio26.netlify.app/cv/cv",
+    "sertifikat": "https://fathanportfolio26.netlify.app/certificates/certificates",
+    "code": "https://fathanportfolio26.netlify.app/code/code",
     "kontak": "kontak",
     "tentang": "tentang",
     "sosial media": "sosial media"
